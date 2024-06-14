@@ -1,0 +1,24 @@
+User Service
+    Base URL: http://localhost:5001
+    Database Name: user_db
+    Signup: Allows new users to register by providing a username, email, password, and mobile number.
+    Login: Authenticates users and provides a JWT token for session management.
+    Search User: Enables users to search for other users by name.
+    Follow/Unfollow: Allows users to follow or unfollow other users.
+
+Discussion Service
+    Base URL: http://localhost:5002
+    Database Name: discussion_db
+    Create Discussion: Users can create new discussions with text, images, and hashtags.
+    Update/Delete Discussion: Users can update or delete their own discussions.
+    View Discussion: Increments the view count each time a discussion is accessed.
+    Search Discussions: Users can search for discussions by text or tags.
+
+Comment Service
+    Base URL: http://localhost:5003
+    Database Name: comment_db
+    Add Comment: Users can add comments to discussions.
+    Update/Delete Comment: Users can update or delete their own comments.
+    Like Comment: Users can like comments.
+    Get Comments: Retrieves all comments for a specific discussion.
+

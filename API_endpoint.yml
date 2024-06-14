@@ -1,0 +1,230 @@
+UserService:  
+  Create User:
+    Endpoint: POST http://localhost:5001/signup
+    Request:
+      {
+      "username": "string",
+      "email": "string",
+      "password": "string",
+      "mobile_no": "string"
+      }
+    Response:
+      {
+      "message": "User created successfully"
+      }
+
+  Login:
+    Endpoint: POST http://localhost:5001/login
+    Request:
+      json
+      {
+        "username": "string",
+        "password": "string"
+      }
+
+    Response:
+    json
+      {
+        "token": "string",
+        "user_id": "integer"
+      }
+
+  Search User:
+    Endpoint: GET http://localhost:5001/users/search
+    Request: '?name=<name>'
+    Response:
+      json
+      [
+        {
+          "id": "integer",
+          "username": "string",
+          "email": "string",
+          "mobile_no": "string"
+        }
+      ]
+
+  Follow User:
+    Endpoint: POST http://localhost:5001/users/follow
+    Request:
+      json
+      {
+        "followed_id": "integer"
+      }
+
+    Response:
+      json
+      {
+        "message": "User followed successfully"
+      }
+
+  Unfollow User:
+    Endpoint: POST http://localhost:5001/users/unfollow
+    Request:
+      json
+      {
+        "followed_id": "integer"
+      }
+
+    Response:
+      json
+      {
+        "message": "User unfollowed successfully"
+      }
+
+
+DiscussionService:
+  Create Discussion:
+    Endpoint: POST http://localhost:5002/discussions
+    Request:
+      json
+      {
+        "title": "string",
+        "text": "string",
+        "image_url": "string",
+        "tags": "string"
+      }
+
+    Response:
+      json
+      {
+        "message": "Discussion created successfully",
+        "discussion_id": "integer"
+      }
+
+  Update Discussion:
+    Endpoint: PUT http://localhost:5002/discussions/<id>
+    Request:
+      json
+      {
+        "title": "string",
+        "text": "string",
+        "image_url": "string",
+        "tags": "string"
+      }
+
+    Response:
+      json
+      {
+        "message": "Discussion updated successfully"
+      }
+  
+  Delete Discussion:
+    Endpoint: DELETE http://localhost:5002/discussions/<id>
+    Response:
+      json
+      {
+        "message": "Discussion deleted successfully"
+      }
+  
+  List Discussions:
+    Endpoint: GET http://localhost:5002/discussions
+    Response:
+      json
+      [
+        {
+          "id": "integer",
+          "title": "string",
+          "text": "string",
+          "image_url": "string",
+          "tags": "string",
+          "user_id": "integer",
+          "created_on": "datetime",
+          "view_count": "integer"
+        }
+      ]
+
+  Search Discussions by Text:
+    Endpoint: GET http://localhost:5002/discussions/search
+    Request: '?text=<text>'
+    Response:
+      json
+      [
+        {
+          "id": "integer",
+          "title": "string",
+          "text": "string",
+          "image_url": "string",
+          "tags": "string",
+          "user_id": "integer",
+          "created_on": "datetime",
+          "view_count": "integer"
+        }
+      ]
+  
+  List Discussions by Tags:
+    Endpoint: GET http://localhost:5002/discussions/tags
+    Request: '?tags=<tags>'
+    Response:
+      json
+      [
+        {
+          "id": "integer",
+          "title": "string",
+          "text": "string",
+          "image_url": "string",
+          "tags": "string",
+          "user_id": "integer",
+          "created_on": "datetime",
+          "view_count": "integer"
+        }
+      ]
+
+CommentService:
+  Add Comment:
+    Endpoint: POST http://localhost:5003/comments
+    Request:
+      json
+      {
+        "text": "string",
+        "discussion_id": "integer"
+      }
+
+    Response:
+      json
+      {
+        "message": "Comment added successfully",
+        "comment_id": "integer"
+      }
+  
+  Update Comment:
+    Endpoint: PUT http://localhost:5003/comments/<id>
+    Request:
+      json
+      {
+        "text": "string"
+      }
+
+    Response:
+      json
+      {
+        "message": "Comment updated successfully"
+      }
+  
+  Delete Comment:
+    Endpoint: DELETE http://localhost:5003/comments/<id>
+    Response:
+      json
+      {
+        "message": "Comment deleted successfully"
+      }
+  
+  Like Comment:
+    Endpoint: POST http://localhost:5003/comments/<id>/like
+    Response:
+      json
+      {
+        "message": "Comment liked successfully"
+      }
+
+  Get Comments for Discussion:
+    Endpoint: GET http://localhost:5003/discussions/<id>/comments
+    Response:
+      json
+      [
+        {
+          "id": "integer",
+          "text": "string",
+          "user_id": "integer",
+          "created_on": "datetime"
+        }
+      ]

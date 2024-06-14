@@ -1,0 +1,43 @@
+Database Schema
+
+
+User Service
+
+User Table
+    id: Integer, Primary Key
+    username: String, Unique
+    email: String, Unique
+    password: String
+    mobile_no: String, Unique
+
+Follow Table
+    id: Integer, Primary Key
+    follower_id: Integer, Foreign Key (User.id)
+    followed_id: Integer, Foreign Key (User.id)
+
+Discussion Service
+
+Discussion Table:
+    id: Integer, Primary Key
+    title: String
+    text: Text
+    image_url: String
+    tags: String
+    user_id: Integer, Foreign Key (User.id)
+    created_on: DateTime
+    view_count: Integer
+
+Comment Service
+
+Comment Table:
+    id: Integer, Primary Key
+    text: Text
+    user_id: Integer, Foreign Key (User.id)
+    discussion_id: Integer, Foreign Key (Discussion.id)
+    created_on: DateTime
+    Like Table:
+    id: Integer, Primary Key
+    user_id: Integer, Foreign Key (User.id)
+    discussion_id: Integer, Foreign Key (Discussion.id)
+    comment_id: Integer, Foreign Key (Comment.id)
+
